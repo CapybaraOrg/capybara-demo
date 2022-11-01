@@ -10,7 +10,6 @@ on:
         required: true
         default: false
 
-
 defaults:
   run:
     shell: bash
@@ -25,21 +24,20 @@ jobs:
         id: capybara
         uses: CapybaraOrg/capybara-action@main
         with:
-          isCapybaraDispatch: ${{inputs.isCapybaraDispatch}}
-          capybaraUrl: ${{secrets.CAPYBARA_URL}}
-          clientId: ${{secret.CAPYBARA_CLIENT_ID}}
+          isCapybaraDispatch: ${{ inputs.isCapybaraDispatch }}
+          capybaraUrl: ${{ secrets.CAPYBARA_URL }}
+          clientId: ${{ secrets.CAPYBARA_CLIENT_ID }}
           workflowId: 'example-workflow'
           repoName: 'capybara-demo'
-          ref: ${{github.ref_name}}
-          owner: ${{github.repository_owner}}
+          ref: ${{ github.ref_name }}
+          owner: ${{ github.repository_owner }}
           durationInMinutes: '20'
           maximumDelayInSeconds: '28800'
           location: 'uksouth'
       - name: Print Capybara action output
-        run: echo "The greenest time to run your workflow is calculated - your run will start approximately at ${{ steps.capybara.outputs.bestTimeToStart}}"
+        run: echo "The greenest time to run your workflow is calculated - your run will start approximately at ${{ steps.capybara.outputs.bestTimeToStart }}"
       - name: Checkout
         uses: actions/checkout@v2.5.0
       - name: Run example process
         run: |
           ./process.sh
-        
