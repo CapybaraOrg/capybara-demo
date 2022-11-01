@@ -1,7 +1,15 @@
 name: Example Workflow
 
 on:
+  schedule:
+    - cron: '00 1 * * 1'  # At 01:00 on Mondays.
   workflow_dispatch:
+    inputs:
+      isCapybaraDispatch:
+        description: System only property (ignore)
+        required: true
+        default: false
+
 
 defaults:
   run:
@@ -13,15 +21,25 @@ jobs:
     environment: main_environment
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.5.0
-      - name: Hello world action step
-        id: hello
+      - name: Capybara action
+        id: capybara
         uses: CapybaraOrg/capybara-action@main
         with:
-          who-to-greet: 'Mona the Octocat'
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          isCapybaraDispatch: ${{inputs.isCapybaraDispatch}}
+          capybaraUrl: ${{secrets.CAPYBARA_URL}}
+          clientId: ${{secret.CAPYBARA_CLIENT_ID}}
+          workflowId: 'example-workflow'
+          repoName: 'capybara-demo'
+          ref: ${{github.ref_name}}
+          owner: ${{github.repository_owner}}
+          durationInMinutes: '20'
+          maximumDelayInSeconds: '28800'
+          location: 'uksouth'
+      - name: Print Capybara action output
+        run: echo "The greenest time to run your workflow is calculated - your run will start approximately at ${{ steps.capybara.outputs.bestTimeToStart}}"
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
       - name: Run example process
         run: |
           ./process.sh
+        
