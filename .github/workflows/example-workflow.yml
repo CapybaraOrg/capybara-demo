@@ -8,7 +8,7 @@ on:
       isCapybaraDispatch:
         description: System only property (ignore)
         required: true
-        default: false
+        default: 'false'
 
 defaults:
   run:
