@@ -28,7 +28,7 @@ jobs:
           isCapybaraDispatch: ${{ inputs.isCapybaraDispatch }}
           capybaraUrl: ${{ secrets.CAPYBARA_URL }}
           clientId: ${{ secrets.CAPYBARA_CLIENT_ID }}
-          workflowId: 'example-workflow'
+          workflowId: 'example-workflow.yml'
           repoName: 'capybara-demo'
           ref: ${{ github.ref_name }}
           owner: ${{ github.repository_owner }}
