@@ -33,7 +33,7 @@ jobs:
           ref: ${{ github.ref_name }}
           owner: ${{ github.repository_owner }}
           durationInMinutes: '10'
-          maximumDelayInSeconds: '10800'
+          maximumDelayInSeconds: '1800'
           location: 'eastus'
       - name: Print Capybara action output
         run: echo "The greenest time to run your workflow is calculated - your run will start approximately at ${{ steps.capybara.outputs.bestTimeToStart }}"
