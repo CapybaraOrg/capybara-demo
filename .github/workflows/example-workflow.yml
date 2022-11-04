@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Capybara action
         id: capybara
-        uses: CapybaraOrg/capybara-action@v1.0.1
+        uses: CapybaraOrg/capybara-action@v1.0.3
         with:
           github-token: ${{ github.token }}
           isCapybaraDispatch: ${{ inputs.isCapybaraDispatch }}
