@@ -1,19 +1,14 @@
-# Capybara Demo
+# Capybara GitHub Action Demo
 
-Demo project using [capybara-action](https://github.com/CapybaraOrg/capybara-action)
+Demo repository which is using [capybara-action](https://github.com/CapybaraOrg/capybara-action).
+
+The repository contains simple [example-workflow.yml](.github/workflows/example-workflow.yml) which is executing dummy
+[process.sh](./process.sh) script which simulates a long running process (currently set to 10 minutes).
 
 ## Requirements
 
-The workflows need to use `workflow_dispatch`:
-
-```yaml
-on:
-  workflow_dispatch:
-```
-
-The repository needs an environment (for example `main_environment`) where the secrets can be stored
-and passed to the [capybara-action](https://github.com/CapybaraOrg/capybara-action)
+This demo follows the instructions from [Usage and Setup](https://github.com/CapybaraOrg/capybara-action#usage-and-setup).
 
 ## Usage
 
-Please see [example-workflow.yml](.github/workflows/example-workflow.yml)
+Please see [example-workflow.yml](.github/workflows/example-workflow.yml).
